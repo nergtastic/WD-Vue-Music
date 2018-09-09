@@ -3,6 +3,8 @@ import Router from 'vue-router'
 import Dashboard from '@/components/Dashboard'
 import Register from '@/components/Register'
 import Login from '@/components/Login'
+import Playlist from '@/components/Playlist'
+import Store from '../store'
 
 Vue.use(Router)
 
@@ -11,7 +13,13 @@ export default new Router({
     {
       path: '/dashboard',
       name: 'Dashboard',
-      component: Dashboard
+      component: Dashboard,
+      beforeEnter(to, from, next) {
+        if (Store.state.user.email) {
+          return next()
+        }
+        return next('/login')
+      }
     },
     {
       path: '/register',
@@ -22,6 +30,11 @@ export default new Router({
       path: '/login',
       name: 'Login',
       component: Login
+    },
+    {
+      path: '/dashboard',
+      name: 'Playlist',
+      component: Playlist
     }
   ]
 })

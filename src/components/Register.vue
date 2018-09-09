@@ -1,5 +1,5 @@
 <template>
-    <div class="register container">
+    <div class="register container col-6">
         <div class="row justify-content-around">
             <div class="col-4">
                 <form @submit.prevent="register(user);user = {};">

@@ -1,5 +1,5 @@
 <template>
-    <div class="login container">
+    <div class="login container col-6">
         <div class="row justify-content-around">
             <div class="col-4">
                 <form @submit.prevent="login(user);user = {};">

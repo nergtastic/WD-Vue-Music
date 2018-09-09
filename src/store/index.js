@@ -14,9 +14,10 @@ let itunes = axios.create({
 })
 
 let store = new vuex.Store({
-    state: {
+    state: { //This sets up a watcher for each entry here
         user: {},
-        songs: []
+        songs: [],
+        mySongs: []
     },
     mutations: {
         setUser(state, user) {
@@ -25,6 +26,9 @@ let store = new vuex.Store({
         setSongs(state, songs) {
             state.songs = songs
         },
+        setMySongs(state, songs) {
+            state.mySongs = songs
+        }
     },
     actions: {
         search({ commit, dispatch }, query) {
@@ -74,12 +78,37 @@ let store = new vuex.Store({
             //if someone is signed in, it goes to dashboard, if not, go to auth
             firebase.auth().onAuthStateChanged(user => {
                 if (user) {
-                    commit("setUser", user)
+                    commit('setUser', user)
+                    dispatch('getMySongs')
                     router.push('/dashboard')
                 } else {
                     router.push('/login')
                 }
             });
+        },
+        getMySongs({ state, commit, dispatch }) {
+            db.collection('songs').where("creatorId", "==", state.user.uid).get().then(querySnapShot => {
+                let songs = []
+                querySnapShot.forEach(doc => {
+                    if (doc.exists) {
+                        let song = doc.data()
+                        song.id = doc.id
+                        songs.push(song)
+                    }
+                })
+                commit('setMySongs', songs)
+            })
+        },
+        addSong({ commit, dispatch }, newSong) {
+            db.collection('songs').add(newSong).then(doc => {
+                console.log("Added Song with ID: ", doc.id)
+                dispatch('getMySongs')
+            })
+        },
+        deleteSong({ commit, dispatch }, id) {
+            db.collection('songs').doc(id).delete().then(() => {
+                dispatch('getMySongs')
+            })
         }
     }
 })
