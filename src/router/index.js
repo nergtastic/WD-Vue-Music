@@ -5,6 +5,7 @@ import Register from '@/components/Register'
 import Login from '@/components/Login'
 import Playlist from '@/components/Playlist'
 import Store from '../store'
+import Search from '@/components/Search'
 
 Vue.use(Router)
 
@@ -35,6 +36,11 @@ export default new Router({
       path: '/dashboard',
       name: 'Playlist',
       component: Playlist
+    },
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search
     }
   ]
 })
