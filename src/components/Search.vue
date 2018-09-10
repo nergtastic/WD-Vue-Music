@@ -1,11 +1,11 @@
 <template>
     <div class="dashboard row justify-content-around">
-        <div class="col-10">
-            <div class="col-12">
-                <h1 class="col-12 title">Music</h1>
+        <div class="col-lg-10">
+            <div class="col-lg--12">
+                <h1 class="col-lg-12 title">Music</h1>
             </div>
 
-            <div class="col-4 offset-4">
+            <div class="col-lg-4 offset-4">
                 <form @submit.prevent="search(query); query = '';">
                     <div class="form-group">
                         <label for="name">Search</label>
@@ -14,12 +14,12 @@
                     <button class="btn btn-dark margin-bottom" type="submit">Search</button>
                 </form>
             </div>
-            <div class="col-12">
+            <div class="col-lg-12">
                 <div class="container-fluid">
-                    <div class="row justify-content-between">
-                        <div class="col-4" v-for="song in songs">
-                            <div class="card text-white bg-dark" style="max-width: 40rem;">
-                                <div class="card-body ">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-6" v-for="song in songs">
+                            <div class="card text-white bg-dark" style="max-width: 40rem; min-width: 17rem;">
+                                <div class="card-body">
                                     <img :src="song.artworkUrl100" class="song-image" />
                                     <h3 class="card-title">{{song.artistName}}</h3>
                                     <h6 class="card-subtitle">"{{song.trackName}}"</h6>
@@ -106,7 +106,7 @@
 
     .card {
         height: auto;
-        margin: 15px;
+        margin: 10px;
         border-radius: 25px;
     }
 
@@ -125,5 +125,9 @@
     .song-image {
         float: left;
         margin: 5px 25px 25px 25px;
+    }
+
+    .song-item {
+        width: 85%;
     }
 </style>

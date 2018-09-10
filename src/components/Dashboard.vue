@@ -2,8 +2,8 @@
   <div>
     <br />
     <div class="btn-group">
-      <button class="btn btn-pair" @click="togglePlaylist">Playlist</button>
-      <button class="btn btn-pair" @click="toggleSearch">Search</button>
+      <button class="btn btn-pair" @click="togglePlaylist">Playlist View</button>
+      <button class="btn btn-pair" @click="toggleSearch">Search View</button>
     </div>
     <br /><br />
     <Search v-show="showSearch"></Search>
