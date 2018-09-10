@@ -1,13 +1,6 @@
 <template>
   <div id="app">
     <div>
-      <!-- <h4>Your Playlist:</h4>
-      <div v-for="song in mySongs">
-        <a>"{{song.title}}" by {{song.artist}}</a>
-      </div> -->
-      <!-- <form @submit.prevent="createList(); newList = {}">
-        <button type="submit" class="btn btn-primary">Create Playlist</button>
-      </form> -->
     </div>
     <div>
       <div>

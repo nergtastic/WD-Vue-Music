@@ -28,31 +28,8 @@
       this.$store.dispatch("getMySongs");
     },
     computed: { //if I want to access something on the state, I need to reference it in computed.
-      // songs() {
-      //   return this.$store.state.songs
-      // },
-      // mySongs() {
-      //   return this.$store.state.mySongs
-      // },
-      // user() {
-      //   return this.$store.state.user
-      // }
     },
     methods: {
-      // search(query) {
-      //   this.$store.dispatch('search', query)
-      // },
-      // addSong(song) {
-      //   let newSong = {
-      //     creatorId: this.user.uid,
-      //     title: song.trackName,
-      //     artist: song.artistName,
-      //     art: song.artworkUrl100,
-      //     preview: song.previewUrl,
-      //     id: song.trackId
-      //   }
-      //   this.$store.dispatch('addSong', newSong)
-      // },
       togglePlaylist() {
         this.showPlaylist = true
         this.showSearch = false

@@ -1,28 +1,4 @@
 <template>
-    <!-- <div class="dashboard row justify-content-around">
-        <div class="col-12">
-            <h1 class="col-12 title">Your Playlists</h1>
-        </div>
-
-        <div class="col-4">
-            <form @submit.prevent="createList; newList = {}">
-                <div class="form-group">
-                    <input type="text" name="title" id="title" v-model="newList.title" placeholder="Name new playlist" required><br
-                    /><br />
-                    <input type="email" name="author" id="author" v-model="newList.author" hidden>
-                </div>
-                <button class="btn btn-dark margin-bottom" type="submit">New Playlist</button>
-            </form>
-        </div>
-
-        <div class="col-12">
-            <div class="container-fluid">
-                <div class="row justify-content-between">
-                    <router-link :to="{name: 'List', params: {id: playlist.listId}}" v-for="playlist in playlists" :key="playlist.listId">{{playlist.title}}</router-link>
-                </div>
-            </div>
-        </div>
-    </div> -->
     <div class="row">
         <div class="col-6 offset-3 playlist-view">
             <h5>Your Playlist: {{mySongs.length}} songs!</h5>
@@ -30,12 +6,8 @@
             />
             <audio controls id="previewer" class="song-item"></audio>
             <div v-for="(song, index) in mySongs">
-                <!-- <a v-if="mySongs.length <= 1">You don't have a playlist yet! Click 'Search' above to seek out new songs for
-                    your new playlist!</a> -->
                 <button @click="deleteSong(song.id)" class="btn btn-danger song-delete">X</button>
                 <button @click="loadSong(song)" class="btn playlist-song">"{{song.title}}" by {{song.artist}}</button>
-                <!-- <button class="btn btn-info song-up">V</button>
-                <button class="btn btn-info song-down">V</button> -->
             </div>
         </div>
     </div>
@@ -80,8 +52,6 @@
     }
 
     .playlist-view {
-        /* float: left;
-        position: fixed; */
         width: 300px;
         height: 100%;
         top: 0;
